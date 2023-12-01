@@ -14,6 +14,6 @@ class Currency < ApplicationRecord
         }
         request = HTTParty.get(url, :headers => headers, :query => query)
         puts request
-        response = JSON.parse(request.body)["data"][symbol]["quote"]["CAD"]["price"]
+        response = JSON.parse(request.body)["data"][symbol]["quote"]["USD"]["price"]
     end
 end
