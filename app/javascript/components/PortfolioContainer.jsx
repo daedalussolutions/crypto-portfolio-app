@@ -19,7 +19,7 @@ class PortfolioContainer extends Component {
         this.handleSelect = this.handleSelect.bind(this)
     }
 
-    handleChange(e){
+    handleChange(e) {
         /* this.setState({
             [e.target.name]: e.target.value
         }) */
@@ -27,33 +27,67 @@ class PortfolioContainer extends Component {
         axios.post('http://127.0.0.1:3000/search', {
             search: e.target.value
         }, { withCredentials: false })
-        .then( (data)  => {
-            this.setState({
-                search_results: [...data.data.currencies]
+            .then((data) => {
+                this.setState({
+                    search_results: [...data.data.currencies]
+                })
             })
-        })
-        .catch( (data ) => {
-            debugger
-        })
+            .catch((data) => {
+                debugger
+            })
         console.log(this.state.search_results)
     }
 
-    handleSelect(e){
+    handleSelect(e) {
         e.preventDefault()
         const id = e.target.getAttribute('data-id')
-        const activeCurrency = this.state.search_results.filter( item => item.id == parseInt(id))
+        const activeCurrency = this.state.search_results.filter(item => item.id == parseInt(id))
         this.setState({
-            active_currency: activeCurrency[0], 
+            active_currency: activeCurrency[0],
             search_results: []
         })
         debugger
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+    
+        let currency = this.state.active_currency
+        let amount = this.state.amount
+    
+        axios.post('/calculate', {
+          id: currency.id,
+          amount: amount
+        })
+        .then( (data) => {
+          this.setState({
+            amount: '',
+            active_currency: null,
+            portfolio: [...this.state.portfolio, data.data]
+          })
+        })
+        .catch( (err) => console.log(err))
+      }
+    
+      handleAmount = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+      }
+
     render() {
+        const searchOrCalculate = this.state.active_currency ?
+            <Calculate
+                handleChange={this.handleAmount}
+                handleSubmit={this.handleSubmit}
+                active_currency={this.state.active_currency}
+                amount={this.state.amount}
+            /> :
+            <Search
+                handleSelect={this.handleSelect}
+                searchResults={this.state.search_results}
+                handleChange={this.handleChange} />
         return (
             <div>
-                <Search handleSelect={this.handleSelect} searchResults={this.state.search_results} handleChange={this.handleChange} />
-                <Calculate />
+                {searchOrCalculate}
             </div>
         )
     }
