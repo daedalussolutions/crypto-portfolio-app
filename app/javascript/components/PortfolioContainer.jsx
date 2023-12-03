@@ -47,7 +47,6 @@ class PortfolioContainer extends Component {
         const id = e.target.getAttribute('data-id')
         const activeCurrency = this.state.search_results.find(item => item.id == parseInt(id))
         this.setState({
-
             active_currency: activeCurrency,
             search_results: []
         })
@@ -76,7 +75,7 @@ class PortfolioContainer extends Component {
     handleAmount = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
-
+    
     render() {
         const searchOrCalculate = this.state.active_currency ?
             <Calculate
@@ -91,10 +90,16 @@ class PortfolioContainer extends Component {
                 handleChange={this.handleChange} />
         return (
             <div className="grid">
-                <div className="left">
+                <div className="left card card-tertiary">
+                    <div class="card-header text-center">
+                        <span>Search</span>
+                    </div>
                     {searchOrCalculate}
                 </div>
-                <div className="right">
+                <div className="right card card-secondary">
+                    <div class="card-header text-center">
+                        <span>Portfolio</span>
+                    </div>
                     <Portfolio portfolio={this.state.portfolio} />
                 </div>
             </div>

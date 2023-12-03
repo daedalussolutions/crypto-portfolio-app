@@ -13,13 +13,17 @@ class Portfolio extends Component {
 
     return (
       <div>
+        <div className='account-buttons'>
+          <button className="btn mr-2 mb-2 btn-primary">Sign Up</button>
+          <button className="btn mr-2 mb-2 btn-primary">Login</button>
+        </div>
         <div className="portfolio-value">
-          <div className="portfolio-value--header">Your Total Portfolio Value Is:</div>
-          <div className="portfolio-value--content">${formatted_total}</div>
+          <h2 className="portfolio-value--header">Your Total Portfolio Value Is:</h2>
+          <h3 className="portfolio-value--content">${formatted_total}</h3>
         </div>
-        <div className="portfolio-items">
+        <h3 className="portfolio-items">
           {portfolioItems}
-        </div>
+        </h3>
       </div>
     )
   }
