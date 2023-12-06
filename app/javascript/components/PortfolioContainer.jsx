@@ -46,8 +46,8 @@ class PortfolioContainer extends Component {
         e.preventDefault()
         const id = e.target.getAttribute('data-id')
         const activeCurrency = this.state.search_results.find(item => item.id == parseInt(id))
+        console.log(activeCurrency)
         this.setState({
-
             active_currency: activeCurrency,
             search_results: []
         })
@@ -91,10 +91,16 @@ class PortfolioContainer extends Component {
                 handleChange={this.handleChange} />
         return (
             <div className="grid">
-                <div className="left">
+                <div className="left card card-tertiary">
+                    <div className="card-header text-center">
+                        <span>Search</span>
+                    </div>
                     {searchOrCalculate}
                 </div>
-                <div className="right">
+                <div className="right card card-secondary">
+                    <div className="card-header text-center">
+                        <span>Portfolio</span>
+                    </div>
                     <Portfolio portfolio={this.state.portfolio} />
                 </div>
             </div>
