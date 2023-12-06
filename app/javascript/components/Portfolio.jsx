@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PortfolioItem from './PortfolioItem'
-import Skeleton from '../../assets/images/skeleton-coffee.gif';
 
 class Portfolio extends Component {
   constructor(props) {
@@ -17,7 +16,6 @@ class Portfolio extends Component {
         <div className='account-buttons'>
           <button className="btn mr-2 mb-2 btn-primary">Sign Up</button>
           <button className="btn mr-2 mb-2 btn-primary">Login</button>
-          <img src={Skeleton} height={200}></img>
         </div>
         <div className="portfolio-value">
           <h2 className="portfolio-value--header">Your Total Portfolio Value Is:</h2>

@@ -23,6 +23,10 @@ const PortfolioItem = (props) => {
           <div className="header">Current Value:</div>
           <div className="text">${props.item.value}</div>
         </div>
+
+        <div className="col">
+          <button className="btn mr-2 mb-2 btn-primary">Delete</button>
+        </div>
       </div>
     </div>
   )
