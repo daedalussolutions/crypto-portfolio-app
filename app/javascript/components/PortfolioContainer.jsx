@@ -20,6 +20,7 @@ class PortfolioContainer extends Component {
         this.handleSelect = this.handleSelect.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleAmount = this.handleAmount.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
     handleChange(e) {
@@ -46,7 +47,6 @@ class PortfolioContainer extends Component {
         e.preventDefault()
         const id = e.target.getAttribute('data-id')
         const activeCurrency = this.state.search_results.find(item => item.id == parseInt(id))
-        console.log(activeCurrency)
         this.setState({
             active_currency: activeCurrency,
             search_results: []
@@ -76,6 +76,16 @@ class PortfolioContainer extends Component {
     handleAmount = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
+
+    handleDelete = (e) => {
+        const id = e.target.getAttribute('data-id')
+        console.log("handleDelete called")
+        this.setState({
+          portfolio: [...this.state.portfolio.filter(currency => currency.id !== id)]
+        })
+      }
+
+    
 
     render() {
         const searchOrCalculate = this.state.active_currency ?

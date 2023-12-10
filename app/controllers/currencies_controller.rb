@@ -18,6 +18,12 @@ class CurrenciesController < ApplicationController
         }
       end
 
+    def delete
+        render json: {
+            currency: null
+        }
+    end
+
     private 
 
     def currency 

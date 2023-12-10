@@ -6,6 +6,7 @@ class Portfolio extends Component {
     super(props)
   }
 
+
   render() {
     const portfolioItems = this.props.portfolio.map((item, index) => <PortfolioItem key={index} item={item} />)
     const total = this.props.portfolio.reduce((total, curr) => total + curr.value, 0)
@@ -25,7 +26,7 @@ class Portfolio extends Component {
           {portfolioItems}
         </h3>
         <div>
-          
+
         </div>
       </div>
     )
