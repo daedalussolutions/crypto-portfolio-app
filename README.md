@@ -11,3 +11,5 @@ TODO:
 - Add login screen with user state functionality.
 - Delete button on added coins.
 - Edit button on added coins.
+
+- ![image](https://github.com/daedalussolutions/crypto-portfolio-app/assets/119969921/3f78b817-300a-412c-a650-5f53c1c337db)
