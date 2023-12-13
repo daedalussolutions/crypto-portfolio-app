@@ -18,11 +18,13 @@ class CurrenciesController < ApplicationController
         }
       end
 
-    def delete
-        render json: {
-            currency: null
-        }
-    end
+      def delete
+        if currency.destroy
+          render json: { success: true, message: 'Currency deleted successfully' }
+        else
+          render json: { success: false, message: 'Failed to delete currency' }, status: :unprocessable_entity
+        end
+      end
 
     private 
 

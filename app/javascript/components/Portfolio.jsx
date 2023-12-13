@@ -6,9 +6,8 @@ class Portfolio extends Component {
     super(props)
   }
 
-
   render() {
-    const portfolioItems = this.props.portfolio.map((item, index) => <PortfolioItem key={index} item={item} />)
+    const portfolioItems = this.props.portfolio.map((item, index) => <PortfolioItem key={index} item={item} data-id={item.id} onClick={this.props.handleDelete} onChange={this.props.onChange}/>)
     const total = this.props.portfolio.reduce((total, curr) => total + curr.value, 0)
     const formatted_total = total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
 

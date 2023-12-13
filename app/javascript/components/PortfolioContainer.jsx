@@ -78,12 +78,25 @@ class PortfolioContainer extends Component {
     }
 
     handleDelete = (e) => {
-        const id = e.target.getAttribute('data-id')
         console.log("handleDelete called")
-        this.setState({
-          portfolio: [...this.state.portfolio.filter(currency => currency.id !== id)]
-        })
-      }
+        axios.delete(`http://127.0.0.1:3000/delete`,
+        {delete: e.target.value}, { withCredentials: false })
+            .then((response) => {
+                if (response.data.success) {
+                    // Currency deleted successfully
+                    this.setState({
+                        // Update your state to remove the deleted currency
+                        portfolio: this.state.portfolio.filter(currency => currency.id !== currency)
+                    });
+                } else {
+                    // Failed to delete currency
+                    console.error(response.data.message);
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
 
     
 
@@ -111,7 +124,9 @@ class PortfolioContainer extends Component {
                     <div className="card-header text-center">
                         <span>Portfolio</span>
                     </div>
-                    <Portfolio portfolio={this.state.portfolio} />
+                    <Portfolio 
+                    portfolio={this.state.portfolio}
+                    handleDelete={this.handleDelete} />
                 </div>
             </div>
         )
