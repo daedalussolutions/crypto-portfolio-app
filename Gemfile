@@ -49,6 +49,8 @@ gem "httparty"
 
 gem 'rack-cors'
 
+gem 'dotenv-rails'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

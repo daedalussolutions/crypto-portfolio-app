@@ -9,7 +9,7 @@ class Currency < ApplicationRecord
             "symbol" => symbol
         }
         headers = {
-            "X-CMC_PRO_API_KEY" => Rails.application.credentials.dig(:coin_market_cap, :api_key),
+            "X-CMC_PRO_API_KEY" => ENV["COIN_MARKET_CAP_API_KEY"],
             "Accepts" => "application/json"
         }
         request = HTTParty.get(url, :headers => headers, :query => query)
