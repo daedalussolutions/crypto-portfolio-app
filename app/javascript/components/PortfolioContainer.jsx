@@ -28,7 +28,7 @@ class PortfolioContainer extends Component {
             [e.target.name]: e.target.value
         }) */
 
-        axios.post('https://localhost:3000/search', {
+        axios.post('https://cryptoportfolio-exe.onrender.com/search', {
             search: e.target.value
         }, { withCredentials: false })
             .then((data) => {
@@ -59,7 +59,7 @@ class PortfolioContainer extends Component {
         let currency = this.state.active_currency
         let amount = this.state.amount
 
-        axios.post('https://localhost:3000/calculate', {
+        axios.post('https://cryptoportfolio-exe.onrender.com/calculate', {
             id: currency.id,
             amount: amount
         }, { withCredentials: false })
@@ -79,7 +79,7 @@ class PortfolioContainer extends Component {
 
     handleDelete = (e) => {
         console.log("handleDelete called")
-        axios.delete(`https://localhost:3000/delete`,
+        axios.delete(`https://cryptoportfolio-exe.onrender.com/delete`,
         {delete: e.target.value}, { withCredentials: false })
             .then((response) => {
                 if (response.data.success) {
