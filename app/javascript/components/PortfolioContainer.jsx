@@ -28,7 +28,7 @@ class PortfolioContainer extends Component {
             [e.target.name]: e.target.value
         }) */
 
-        axios.post('http://localhost:3000/search', {
+        axios.post('https://localhost:3000/search', {
             search: e.target.value
         }, { withCredentials: false })
             .then((data) => {
@@ -59,7 +59,7 @@ class PortfolioContainer extends Component {
         let currency = this.state.active_currency
         let amount = this.state.amount
 
-        axios.post('http://localhost:3000/calculate', {
+        axios.post('https://localhost:3000/calculate', {
             id: currency.id,
             amount: amount
         }, { withCredentials: false })
@@ -79,7 +79,7 @@ class PortfolioContainer extends Component {
 
     handleDelete = (e) => {
         console.log("handleDelete called")
-        axios.delete(`http://localhost:3000/delete`,
+        axios.delete(`https://localhost:3000/delete`,
         {delete: e.target.value}, { withCredentials: false })
             .then((response) => {
                 if (response.data.success) {
