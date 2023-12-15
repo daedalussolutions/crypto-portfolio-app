@@ -1,6 +1,22 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+// <!--
 
+// =========================================================
+// * Windows 95 UI Kit
+// =========================================================
+
+// * Product Page: https://themesberg.com/product/ui-kit/windows-95-ui-kit
+// * Copyright 2019 Themesberg (https://www.themesberg.com)
+// * License Themesberg (Crafty Dwarf LLC) (https://themesberg.com/licensing)
+
+// * Coded by https://themesberg.com
+
+// =========================================================
+
+// * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+// -->
 @font-face {
     font-family: 'Windows 95';
     src: local('Windows 95')url('../fonts/w-95-sans-serif.woff2') format('woff2'),
@@ -36,6 +52,12 @@
   label{
     padding-bottom:6px;
   }
+
+  .about-container, .login-container, .about-container {
+    margin: 15% 5%;
+  }
+
+
   .profileImg{
     width:20px;
     border-radius:100%;
