@@ -26,6 +26,7 @@ const Login = (props) => {
             </form>
             <div>
               <p>New user? <a href="/register">Register</a></p>
+              <a href="#">Forgot passsword?</a>
             </div>
           </div>
         </div>
